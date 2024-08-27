@@ -2,19 +2,24 @@ import {Component, OnInit} from '@angular/core';
 import {SearchComponent} from "../search/search.component";
 import {UserDetailComponent} from "../user-detail/user-detail.component";
 import {NgForOf} from "@angular/common";
+import {ButtonDeleteComponent} from "../button-delete/button-delete.component";
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [SearchComponent, UserDetailComponent, NgForOf],
+  imports: [SearchComponent, UserDetailComponent, NgForOf, ButtonDeleteComponent],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent implements OnInit {
-  condition:string="B";
+
+  searchText: string = "";
 
   users  :{id:number, name:string,username:string ,email:string}[] = [];
-  searchText: string = "";
+
+  deleteUser(userId:number){
+    this.users = this.users.filter(user => user.id !== userId);
+  }
 
   onSearchChange(searchText:string){
     console.log("USER LIST : ",searchText);
@@ -56,4 +61,5 @@ export class UserListComponent implements OnInit {
     ];
   }
 
+  condition:string="B";
 }

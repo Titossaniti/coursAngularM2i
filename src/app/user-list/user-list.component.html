@@ -10,6 +10,7 @@
   @for (user of users; track user.id) {
   <li>
     <app-user-detail [user]="user"></app-user-detail>
+    <app-button-delete (clickedToDelete)="deleteUser(user.id)"></app-button-delete>
   </li> }
 </ul>
 <p>{{searchText}}</p>
