@@ -1,0 +1,22 @@
+<app-search></app-search>
+<ul>
+  @for (user of users; track user.id) {
+    <li>{{ user.name }} - {{ user.email }}</li>
+  } @empty {
+    <li>Aucun utilisateur trouvé.</li>
+  }
+</ul>
+<br>
+<div>
+  @switch (condition) {
+    @case ('A') {
+      <p style="color: blue">Bleu.</p>
+    }
+    @case ('B') {
+      <p style="color: red">Rouge.</p>
+    }
+    @default {
+      Cas par défaut.
+    }
+  }
+</div>
