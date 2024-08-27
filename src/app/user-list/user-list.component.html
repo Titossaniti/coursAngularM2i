@@ -1,11 +1,21 @@
-<app-search></app-search>
+<app-search (searchChange)="onSearchChange($event)"></app-search>
+<!--<ul>-->
+<!--  @for (user of users; track user.id) {-->
+<!--    <li>{{ user.name }} - {{ user.email }}</li>-->
+<!--  } @empty {-->
+<!--    <li>Aucun utilisateur trouvé.</li>-->
+<!--  }-->
+<!--</ul>-->
 <ul>
   @for (user of users; track user.id) {
-    <li>{{ user.name }} - {{ user.email }}</li>
-  } @empty {
-    <li>Aucun utilisateur trouvé.</li>
-  }
+  <li>
+    <app-user-detail [user]="user"></app-user-detail>
+  </li> }
 </ul>
+<p>{{searchText}}</p>
+
+<br>
+<br>
 <br>
 <div>
   @switch (condition) {
