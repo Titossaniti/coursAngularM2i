@@ -3,6 +3,7 @@ import {SearchComponent} from "../search/search.component";
 import {UserDetailComponent} from "../user-detail/user-detail.component";
 import {NgForOf} from "@angular/common";
 import {ButtonDeleteComponent} from "../button-delete/button-delete.component";
+import type {User} from "../user.type";
 
 @Component({
   selector: 'app-user-list',
@@ -15,10 +16,10 @@ export class UserListComponent implements OnInit {
 
   searchText: string = "";
 
-  users  :{id:number, name:string,username:string ,email:string}[] = [];
+  users  :User[] = [];
 
-  deleteUser(userId:number){
-    this.users = this.users.filter(user => user.id !== userId);
+  deleteUser(id:number){
+    this.users = this.users.filter(user => user.id !== id);
   }
 
   onSearchChange(searchText:string){
@@ -26,39 +27,19 @@ export class UserListComponent implements OnInit {
     this.searchText=searchText;
   }
 
-  ngOnInit(): void {
-    this.users = [
-      {
-        id: 1,
-        name: "Leanne Graham",
-        username: "Bret",
-        email: "Sincere@april.biz",
-      },
-      {
-        id: 2,
-        name: "Ervin Howell",
-        username: "Antonette",
-        email: "Shanna@melissa.tv",
-      },
-      {
-        id: 3,
-        name: "Clementine Bauch",
-        username: "Samantha",
-        email: "Nathan@yesenia.net",
-      },
-      {
-        id: 4,
-        name: "Leanne Graham",
-        username: "Bret",
-        email: "Sincere@april.biz",
-      },
-      {
-        id: 5,
-        name: "Ervin Howell",
-        username: "Antonette",
-        email: "Shanna@melissa.tv",
-      },
-    ];
+  async ngOnInit(): Promise<void> {
+    try {
+      const url = "https://jsonplaceholder.typicode.com/users"
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      this.users = await response.json();
+
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
   condition:string="B";

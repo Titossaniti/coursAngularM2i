@@ -9,8 +9,8 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class ButtonDeleteComponent {
 
-  @Output() clickedToDelete = new EventEmitter();
-  
+  @Output() clickedToDelete = new EventEmitter<void>();
+
 
   onClickDelete() {
   this.clickedToDelete.emit();
