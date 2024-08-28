@@ -1,13 +1,6 @@
 <app-search (searchChange)="onSearchChange($event)"></app-search>
-<!--<ul>-->
-<!--  @for (user of users; track user.id) {-->
-<!--    <li>{{ user.name }} - {{ user.email }}</li>-->
-<!--  } @empty {-->
-<!--    <li>Aucun utilisateur trouvé.</li>-->
-<!--  }-->
-<!--</ul>-->
 <ul>
-  @for (user of filteredUsers; track user.id) {
+  @for (user of users | filter: searchText ; track user.id) {
   <li>
       <div class="d-flex">
         <app-user-detail [user]="user"></app-user-detail>
@@ -15,20 +8,3 @@
       </div>
   </li> }
 </ul>
-
-<br>
-<br>
-<br>
-<div>
-  @switch (condition) {
-    @case ('A') {
-      <p style="color: blue">Bleu.</p>
-    }
-    @case ('B') {
-      <p style="color: red">Rouge.</p>
-    }
-    @default {
-      Cas par défaut.
-    }
-  }
-</div>

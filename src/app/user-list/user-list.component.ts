@@ -5,11 +5,12 @@ import {CommonModule, NgForOf} from "@angular/common";
 import {ButtonDeleteComponent} from "../button-delete/button-delete.component";
 import type {User} from "../user.type";
 import {HttpClient} from "@angular/common/http";
+import {FilterPipe} from "../filter.pipe";
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [SearchComponent, UserDetailComponent, NgForOf, ButtonDeleteComponent, CommonModule],
+  imports: [SearchComponent, UserDetailComponent, NgForOf, ButtonDeleteComponent, CommonModule, FilterPipe],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
@@ -35,8 +36,7 @@ export class UserListComponent implements OnInit{
 
   deleteUser(id:number){
     this.users = this.users.filter(user => user.id !== id);
-    this.filteredUsers = this.filteredUsers.filter(user => user.id !== id);
-
+    // this.filteredUsers = this.filteredUsers.filter(user => user.id !== id);
   }
 
   // onSearchChange(searchText:string){
@@ -46,7 +46,6 @@ export class UserListComponent implements OnInit{
 
   onSearchChange(searchText:string){
     this.searchText = searchText;
-    this.filteredUsers = this.users.filter((user) => user.name.toLowerCase().includes(searchText.toLowerCase()));
   }
 
   // async ngOnInit(): Promise<void> {
