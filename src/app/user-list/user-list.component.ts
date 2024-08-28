@@ -1,28 +1,26 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchComponent} from "../search/search.component";
 import {UserDetailComponent} from "../user-detail/user-detail.component";
-import {NgForOf} from "@angular/common";
+import {CommonModule, NgForOf} from "@angular/common";
 import {ButtonDeleteComponent} from "../button-delete/button-delete.component";
 import type {User} from "../user.type";
 import {HttpClient} from "@angular/common/http";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [SearchComponent, UserDetailComponent, NgForOf, ButtonDeleteComponent],
+  imports: [SearchComponent, UserDetailComponent, NgForOf, ButtonDeleteComponent, CommonModule],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit{
 
-  constructor(private http: HttpClient) {}
-  url = "https://jsonplaceholder.typicode.com/users";
-
+  apiUrl = "https://jsonplaceholder.typicode.com/users";
   searchText: string = "";
-
   users  :User[] = [];
   filteredUsers : User[] = [];
+
+  constructor(private http: HttpClient) {}
 
   deleteUser(id:number){
     this.users = this.users.filter(user => user.id !== id);
@@ -33,18 +31,20 @@ export class UserListComponent implements OnInit {
   //   this.searchText=searchText;
   // }
 
-  ngOnInit():void {
-    this.http.get<User[]>(this.url).subscribe(
-    (data) => {
-      this.users = data
-    },
-    (error) => {
-      console.log(error)
+  ngOnInit(): void {
+    this.http.get<User[]>(this.apiUrl).subscribe({
+      next: (data) => {
+        this.users = this.filteredUsers = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
     });
   }
 
   onSearchChange(searchText:string){
-    this.filteredUsers = this.users.filter(user => user.name !== searchText);
+    this.searchText = searchText;
+    this.filteredUsers = this.users.filter((user) => user.name.includes(searchText));
   }
 
 

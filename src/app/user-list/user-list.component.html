@@ -7,7 +7,7 @@
 <!--  }-->
 <!--</ul>-->
 <ul>
-  @for (user of users; track user.id) {
+  @for (user of filteredUsers; track user.id) {
   <li>
     <app-user-detail [user]="user"></app-user-detail>
     <app-button-delete (clickedToDelete)="deleteUser(user.id)"></app-button-delete>
