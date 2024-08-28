@@ -1,6 +1,5 @@
 <!-- user-detail.component.html -->
 <div *ngIf="user">
 
-  <p>Nom : {{ user.name }}</p>
-  <p>Email : {{ user.email }}</p>
+  <p><a [routerLink]="['/users/',user.id]" >{{ user.name }}</a></p>
 </div>

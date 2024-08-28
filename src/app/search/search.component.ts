@@ -14,7 +14,7 @@ export class SearchComponent {
 
   @Output() searchChange = new EventEmitter<string>();
 
-  textSearched:string = 'Default';
+  textSearched:string = '';
 
   onInput() {
     console.log("SEARCH : ",`${this.textSearched}`);

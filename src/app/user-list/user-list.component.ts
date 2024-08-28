@@ -22,15 +22,6 @@ export class UserListComponent implements OnInit{
 
   constructor(private http: HttpClient) {}
 
-  deleteUser(id:number){
-    this.users = this.users.filter(user => user.id !== id);
-  }
-
-  // onSearchChange(searchText:string){
-  //   console.log("USER_LIST : ",searchText);
-  //   this.searchText=searchText;
-  // }
-
   ngOnInit(): void {
     this.http.get<User[]>(this.apiUrl).subscribe({
       next: (data) => {
@@ -42,11 +33,21 @@ export class UserListComponent implements OnInit{
     });
   }
 
-  onSearchChange(searchText:string){
-    this.searchText = searchText;
-    this.filteredUsers = this.users.filter((user) => user.name.includes(searchText));
+  deleteUser(id:number){
+    this.users = this.users.filter(user => user.id !== id);
+    this.filteredUsers = this.filteredUsers.filter(user => user.id !== id);
+
   }
 
+  // onSearchChange(searchText:string){
+  //   console.log("USER_LIST : ",searchText);
+  //   this.searchText=searchText;
+  // }
+
+  onSearchChange(searchText:string){
+    this.searchText = searchText;
+    this.filteredUsers = this.users.filter((user) => user.name.toLowerCase().includes(searchText.toLowerCase()));
+  }
 
   // async ngOnInit(): Promise<void> {
   //   try {

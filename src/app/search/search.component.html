@@ -1,4 +1,7 @@
-<input type="text" placeholder="Rechercher"
-       [(ngModel)]="textSearched" (input)="onInput()"/>
-<!--       [value]="textSearched" (input)="onInput($event)"-->
-<button (click)="delOnClick()" >❌</button>
+<div class="m-3 pb-3 border-bottom">
+  <input type="text" placeholder="Rechercher"
+         [(ngModel)]="textSearched" (input)="onInput()"/>
+  <!--       [value]="textSearched" (input)="onInput($event)"-->
+  <button  (click)="delOnClick()" type="button" style="font-size: 10px" class="btn btn-secondary ms-4">❌</button>
+
+</div>

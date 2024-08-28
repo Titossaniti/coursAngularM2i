@@ -1,0 +1,9 @@
+@if (user){
+<h2>{{user.name}}</h2>
+<ul>
+  <li>{{user.username}} | {{user.email}}</li>
+  <li>{{user.address.city}} | {{user.address.street}}</li>
+  <li>{{user.phone}}</li>
+  <li>{{user.company.name}}</li>
+</ul>
+}

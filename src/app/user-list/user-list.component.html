@@ -9,11 +9,12 @@
 <ul>
   @for (user of filteredUsers; track user.id) {
   <li>
-    <app-user-detail [user]="user"></app-user-detail>
-    <app-button-delete (clickedToDelete)="deleteUser(user.id)"></app-button-delete>
+      <div class="d-flex">
+        <app-user-detail [user]="user"></app-user-detail>
+        <app-button-delete (clickedToDelete)="deleteUser(user.id)" class="ms-5"></app-button-delete>
+      </div>
   </li> }
 </ul>
-<p>{{searchText}}</p>
 
 <br>
 <br>

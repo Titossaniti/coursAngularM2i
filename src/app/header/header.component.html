@@ -1,6 +1,6 @@
 <nav class="navbar bg-primary" data-bs-theme="light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" [routerLink]="['']">Navbar</a>
     <div style="color: whitesmoke">
       @if(connectedUser) {<p>Connecté</p>}
       @else {<p>Connectez-vous</p>}
@@ -11,10 +11,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['']">UserList</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" [routerLink]="['/login']" >Login</a>
         </li>
       </ul>
     </div>
