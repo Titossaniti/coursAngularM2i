@@ -1,10 +1,10 @@
 <app-search (searchChange)="onSearchChange($event)"></app-search>
 <ul>
-  @for (user of users | filter: searchText ; track user.id) {
+  @for (user of (users$ | async) | filter: searchText ; track user.id) {
   <li>
       <div class="d-flex">
         <app-user-detail [user]="user"></app-user-detail>
-        <app-button-delete (clickedToDelete)="deleteUser(user.id)" class="ms-5"></app-button-delete>
+<!--        <app-button-delete (clickedToDelete)="deleteUser(user.id)" class="ms-5"></app-button-delete>-->
       </div>
   </li> }
 </ul>
