@@ -1,0 +1,6 @@
+<ul *ngIf="tasks$">
+  @for (task of (tasks$ | async) ; track task.id) {
+    <li class="border-bottom py-3">
+      <a [routerLink]="['/todos/', task.id]">{{task.title}}</a> | {{task.completed}}
+    </li> }
+</ul>

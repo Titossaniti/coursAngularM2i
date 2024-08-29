@@ -18,4 +18,13 @@ export class UserService {
     if (!id) return of(null)
     return this.http.get<User>(`${this.apiUrl}/${id}`)
   }
+  add(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/${user.id}`, user)
+  }
+  update(id: string, user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${id}`, user)
+  }
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`)
+  }
 }

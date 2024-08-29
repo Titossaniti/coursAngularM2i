@@ -1,0 +1,8 @@
+@if (task$ | async ; as task) {
+  <h2>{{task.title}}</h2>
+  <ul>
+    <li>Status | {{task.completed}}</li>
+    <li>Id | {{task.id}}</li>
+    <li>UserId | {{task.userId}}</li>
+  </ul>
+}

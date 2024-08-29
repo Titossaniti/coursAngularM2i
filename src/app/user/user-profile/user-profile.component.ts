@@ -13,7 +13,7 @@ import {Observable} from "rxjs";
 export class UserProfileComponent implements OnInit{
 
   id: string | null = null;
-  user$: Observable<User | null> ;
+  user$!: Observable<User | null>;
 
   constructor(private userService: UserService, private route: ActivatedRoute) {}
 
