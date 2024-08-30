@@ -1,7 +1,7 @@
-<div class="m-3 pb-3 border-bottom">
-  <input type="text" placeholder="Rechercher"
+<div class="input-group m-3 pb-3 border-bottom">
+  <input type="text" class="form-control" placeholder="Rechercher"
          [(ngModel)]="textSearched" (input)="onInput()"/>
-  <!--       [value]="textSearched" (input)="onInput($event)"-->
-  <button  (click)="delOnClick()" type="button" style="font-size: 10px" class="btn btn-secondary ms-4">❌</button>
-
+  <button (click)="delOnClick()" type="button" class="btn btn-secondary">
+    ❌
+  </button>
 </div>

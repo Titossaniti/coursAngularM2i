@@ -1,1 +1,36 @@
-<button type="button" class="btn btn-primary m-2" (click)="goNavigate()">Connexion</button>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-4">Connexion</h3>
+
+
+      <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+        @if(username.invalid && username.touched){
+          <div class="alert alert-danger">
+            Le nom d'utilisateur est requis pour se connecter.
+          </div>
+        }
+        @if(password.invalid && password.touched){
+          <div class="alert alert-danger">
+            Le mot de passe est requis pour se connecter et doit contenir au moins 6 caractères.
+          </div>
+        }
+
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Nom d'utilisateur</label>
+          <input type="text" id="username" name="username" [(ngModel)]="user.username" class="form-control" #username="ngModel" [class.is-invalid]="username.invalid && username.touched" [class.is-valid]="username.valid && username.touched" required/>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Mot de passe</label>
+          <input type="password" id="password" name="password" [(ngModel)]="user.password" class="form-control" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" minlength="6" required/>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Connexion</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>

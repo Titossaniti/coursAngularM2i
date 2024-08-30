@@ -1,0 +1,12 @@
+.navbar-nav .nav-link.active {
+  background-color: #0056b3; /* Couleur pour la route active */
+}
+
+.navbar-nav .dropdown-menu {
+  background-color: #f8f9fa; /* Fond clair pour le dropdown */
+  border: none;
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: #e2e6ea; /* Fond de survol pour les items du dropdown */
+}
